@@ -1,12 +1,10 @@
 "use strict";
 
-let message = document.querySelector(".message");
-
 let displayNumber = document.querySelector(".number");
 const startScore = 20;
 let score = startScore;
 let highScore = document.querySelector(".highscore");
-let highScoreVal = Number(highScore.textContent);
+let highScoreVal = 0;
 
 const checkBtn = document.getElementsByClassName("check btn")[0];
 const againBtn = document.getElementsByClassName("btn again")[0];
@@ -18,32 +16,32 @@ const checkValue = () => {
 
 	const guess = Number(document.querySelector(".guess").value);
 
-	// console.log(secretNumber);
 	if (score > 1) {
 		if (!guess) {
-			message.textContent = "⛔️ No number!";
+			displayMessage("⛔️ No number!");
 			decreaseScore();
 		} else if (guess === secretNumber) {
 			decreaseScore();
 			displayNumber.textContent = secretNumber;
-			message.textContent = "🥳 Correct answer!";
+			displayMessage("🥳 Correct answer!");
 			if (highScoreVal < score) {
-				console.log(highScoreVal, score);
 				highScore.textContent = score;
 				highScoreVal = score;
 			}
-			document.querySelector("body").style.backgroundColor = "#60b347";
+			document.querySelector("body").style.backgroundImage =
+				"linear-gradient(326deg, #a4508b 0%, #5f0a87 74%)";
+
+			displayNumber.style.width = "30rem";
 			checkBtn.setAttribute("disabled", "disabled");
-		} else if (guess > secretNumber) {
-			message.textContent = "👇 Too high, try lower!";
-			decreaseScore();
-		} else if (guess < secretNumber) {
-			message.textContent = "👆 Too low, try higher!";
+		} else if (guess !== secretNumber) {
+			guess > secretNumber
+				? displayMessage("👇 Too high, try lower!")
+				: displayMessage("👆 Too low, try higher!");
 			decreaseScore();
 		}
 	} else {
 		decreaseScore();
-		message.textContent = "💥 You lost the game!";
+		displayMessage("💥 You lost the game!");
 		checkBtn.setAttribute("disabled", "disabled");
 	}
 };
@@ -52,10 +50,13 @@ checkBtn.addEventListener("click", checkValue);
 const playAgain = () => {
 	secretNumber = randNumber();
 	document.querySelector(".score").textContent = startScore;
-	message.textContent = "Start guessing...";
+	// message.textContent = "Start guessing...";
+	displayMessage("Start guessing...");
 	displayNumber.textContent = "?";
 	document.querySelector(".guess").value = "";
-	document.querySelector("body").style.backgroundColor = "#222";
+	document.querySelector("body").style.backgroundColor = "none";
+	document.querySelector("body").style.backgroundImage = "";
+	displayNumber.style.width = "15rem";
 	checkBtn.removeAttribute("disabled");
 	score = startScore;
 };
@@ -66,9 +67,12 @@ const randNumber = function () {
 	return Number.parseInt(Math.random() * 19 + 1);
 };
 let secretNumber = randNumber();
-// console.log(secretNumber);
 
 const decreaseScore = function () {
 	score--;
 	document.querySelector(".score").textContent = score;
+};
+
+const displayMessage = function (txt) {
+	document.querySelector(".message").textContent = txt;
 };
