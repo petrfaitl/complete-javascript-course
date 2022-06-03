@@ -18,44 +18,44 @@ TEST DATA FOR 6: Use players 'Davies', 'Muller', 'Lewandowski' and 'Kimmich'. Th
 */
 
 const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
+    team1: 'Bayern Munich',
+    team2: 'Borrussia Dortmund',
+    players: [
+        [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+        ],
+        [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+        ],
     ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
+    score: '4:0',
+    scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+    date: 'Nov 9th, 2037',
+    odds: {
+        team1: 1.33,
+        x: 3.25,
+        team2: 6.5,
+    },
 };
 // 1
 // const [...players1] = game.players[0];
@@ -87,7 +87,7 @@ const { team1, x: draw, team2 } = game.odds;
 
 // 6
 const printGoals = function (...players) {
-  console.log(`Goals scored: ${players.length}`);
+    console.log(`Goals scored: ${players.length}`);
 };
 
 // printGoals('Davies', 'Muller');
@@ -178,12 +178,12 @@ const printGoals = function (...players) {
 // ""  -->  ""
 
 function order(words) {
-  const arr = words.split(' ');
-  arr.sort((a, b) => {
-    const regex = /\d/;
-    return a.match(regex) - b.match(regex);
-  });
-  return arr.join(' ');
+    const arr = words.split(' ');
+    arr.sort((a, b) => {
+        const regex = /\d/;
+        return a.match(regex) - b.match(regex);
+    });
+    return arr.join(' ');
 }
 
 // console.log(order('is2 Thi1s T4est 3a'));
@@ -220,17 +220,17 @@ function order(words) {
 // If you are given an array with multiple answers, return the lowest correct index
 
 function findEvenIndex(arr) {
-  let result = -1;
-  arr.forEach((el, idx, ar) => {
-    const sumLeft = ar.slice(0, idx).reduce((sum, el) => sum + el, 0);
-    const sumRight = ar
-      .slice(idx + 1, ar.length)
-      .reduce((sum, el) => sum + el, 0);
-    if (sumLeft === sumRight) {
-      result = idx;
-    }
-  });
-  return result;
+    let result = -1;
+    arr.forEach((el, idx, ar) => {
+        const sumLeft = ar.slice(0, idx).reduce((sum, el) => sum + el, 0);
+        const sumRight = ar
+            .slice(idx + 1, ar.length)
+            .reduce((sum, el) => sum + el, 0);
+        if (sumLeft === sumRight) {
+            result = idx;
+        }
+    });
+    return result;
 }
 
 // console.log(findEvenIndex([20, 10, -80, 10, 10, 15, 35]));
@@ -289,25 +289,25 @@ function findEvenIndex(arr) {
 // }
 
 function longestConsec(strarr, k) {
-  // debugger;
-  if (strarr.length === 0 || k > strarr.length || k <= 0) {
-    return '';
-  } else {
-    const newArr = strarr.map((v, i, a) => {
-      const str = strarr.slice(i, i + k).reduce((a, b) => a + b);
+    // debugger;
+    if (strarr.length === 0 || k > strarr.length || k <= 0) {
+        return '';
+    } else {
+        const newArr = strarr.map((v, i, a) => {
+            const str = strarr.slice(i, i + k).reduce((a, b) => a + b);
 
-      return str;
-    });
-    const maxLength = newArr.reduce((prevmax, el) => {
-      return Math.max(prevmax, el.length);
-    }, 0);
+            return str;
+        });
+        const maxLength = newArr.reduce((prevmax, el) => {
+            return Math.max(prevmax, el.length);
+        }, 0);
 
-    const longestConsec = newArr.filter(el => {
-      return el.length === maxLength;
-    });
+        const longestConsec = newArr.filter(el => {
+            return el.length === maxLength;
+        });
 
-    return longestConsec[0];
-  }
+        return longestConsec[0];
+    }
 }
 
 // console.log(
@@ -343,24 +343,24 @@ function longestConsec(strarr, k) {
 // M          1,000
 
 function solution(roman) {
-  const values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
-  let sum = 0;
+    const values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    let sum = 0;
 
-  const digits = [...roman];
-  let skip = false;
-  for (let i = 0; i < digits.length; i++) {
-    const current = digits[i];
-    const next = digits[i + 1];
+    const digits = [...roman];
+    let skip = false;
+    for (let i = 0; i < digits.length; i++) {
+        const current = digits[i];
+        const next = digits[i + 1];
 
-    if (values[current] < values[next]) {
-      sum += values[next] - values[current];
-      i++;
-    } else {
-      sum += values[current];
+        if (values[current] < values[next]) {
+            sum += values[next] - values[current];
+            i++;
+        } else {
+            sum += values[current];
+        }
     }
-  }
 
-  return sum;
+    return sum;
 }
 
 // console.log(solution('IV'));
@@ -397,10 +397,10 @@ function solution(roman) {
 // }
 
 function moveZeros(arr) {
-  const arrCopy = arr.filter(el => el !== 0);
-  let zeros = arr.filter(el => el === 0);
+    const arrCopy = arr.filter(el => el !== 0);
+    let zeros = arr.filter(el => el === 0);
 
-  return [...arrCopy, ...zeros];
+    return [...arrCopy, ...zeros];
 }
 
 // console.log(
@@ -421,10 +421,10 @@ function moveZeros(arr) {
 // );
 
 function move_zeros(arrNum, isRight) {
-  //Your Code logic should written here
-  const arrCopy = arrNum.filter(el => el !== 0);
-  const zeros = arrNum.filter(el => el === 0);
-  return isRight ? [...arrCopy, ...zeros] : [...zeros, ...arrCopy];
+    //Your Code logic should written here
+    const arrCopy = arrNum.filter(el => el !== 0);
+    const zeros = arrNum.filter(el => el === 0);
+    return isRight ? [...arrCopy, ...zeros] : [...zeros, ...arrCopy];
 }
 
 // arrNum = [12, 0, 10, 0, 8, 12, 7, 6, 0, 4, 10, 12, 0];
@@ -476,40 +476,40 @@ function move_zeros(arrNum, isRight) {
 // } while (iterations--);
 
 function isPrime(n) {
-  let iterations = Math.floor(n / 8);
-  const startAt = n % 8;
-  let i = 0;
+    let iterations = Math.floor(n / 8);
+    const startAt = n % 8;
+    let i = 0;
 
-  do {
-    switch (startAt) {
-      case 0:
-      case 7:
-      case 6:
-      case 5:
-      case 4:
-      case 3:
-      case 2:
-      case 1:
-    }
-  } while (iterations--);
+    do {
+        switch (startAt) {
+            case 0:
+            case 7:
+            case 6:
+            case 5:
+            case 4:
+            case 3:
+            case 2:
+            case 1:
+        }
+    } while (iterations--);
 }
 
 function isPrime(num) {
-  if (num <= 2) {
-    return num === 2 ? true : false;
-  }
-  if (num > 2 && num % 2 === 0) {
-    return false;
-  }
-  // debugger;
-  const sqrt = Math.floor(Math.sqrt(num));
-
-  for (let i = 3; i <= sqrt; i += 2) {
-    if (num % i === 0) {
-      return false;
+    if (num <= 2) {
+        return num === 2 ? true : false;
     }
-  }
-  return true;
+    if (num > 2 && num % 2 === 0) {
+        return false;
+    }
+    // debugger;
+    const sqrt = Math.floor(Math.sqrt(num));
+
+    for (let i = 3; i <= sqrt; i += 2) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
 }
 
 // function isPrime(num, i = 2) {
@@ -557,22 +557,22 @@ function isPrime(num) {
 // Note: For 4 or more names, the number in "and 2 others" simply increases.
 
 function likes(arr) {
-  arr = arr.filter(el => {
-    if (el) {
-      return el;
-    }
-  });
-  const [first, second, third, ...rest] = arr.filter(el => el);
-  const plural = arr.length > 1 ? 'like' : 'likes';
-  const str = {
-    0: `no one ${plural} this`,
-    1: `${first} ${plural} this`,
-    2: `${first} and ${second} ${plural} this`,
-    3: `${first}, ${second} and ${third} ${plural} this`,
-    default: `${first}, ${second} and ${arr.rest + 1} others ${plural} this`,
-  };
+    arr = arr.filter(el => {
+        if (el) {
+            return el;
+        }
+    });
+    const [first, second, third, ...rest] = arr.filter(el => el);
+    const plural = arr.length > 1 ? 'like' : 'likes';
+    const str = {
+        0: `no one ${plural} this`,
+        1: `${first} ${plural} this`,
+        2: `${first} and ${second} ${plural} this`,
+        3: `${first}, ${second} and ${third} ${plural} this`,
+        default: `${first}, ${second} and ${arr.rest + 1} others ${plural} this`,
+    };
 
-  return arr.length > 3 ? str.default : str[arr.length];
+    return arr.length > 3 ? str.default : str[arr.length];
 }
 
 // console.log(likes(['Alex', 'Jacob', 'Mark', 'Max']));
@@ -592,7 +592,7 @@ function likes(arr) {
 // If all rooms are busy, return "None available!"
 
 function meeting(x) {
-  return x.indexOf('O') !== -1 ? x.indexOf('O') : 'None available!';
+    return x.indexOf('O') !== -1 ? x.indexOf('O') : 'None available!';
 }
 
 // console.log(meeting(['X', 'O', 'X'])); //, 1);
@@ -626,25 +626,25 @@ function meeting(x) {
 // GOOD LUCK 😀
 
 const scorers = game.scored?.map((el, idx) => {
-  return `Goal  ${idx + 1}: ${el}`;
+    return `Goal  ${idx + 1}: ${el}`;
 });
 
 // console.log(scorers);
 
 const avgOdd = function () {
-  const values = Object.values(game.odds);
-  let sum = 0;
-  for (const odd of values) {
-    sum += odd;
-  }
-  return Math.round((sum / values.length) * 100) / 100;
+    const values = Object.values(game.odds);
+    let sum = 0;
+    for (const odd of values) {
+        sum += odd;
+    }
+    return Math.round((sum / values.length) * 100) / 100;
 };
 // console.log(avgOdd());
 
 for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory of ${game[team]}`;
+    const teamStr = team === 'x' ? 'draw' : `victory of ${game[team]}`;
 
-  // console.log(`Odd of ${teamStr} is ${odd}`);
+    // console.log(`Odd of ${teamStr} is ${odd}`);
 }
 
 // const deDupeScorers = game.scored.filter((el, idx, arr) => {
@@ -657,21 +657,21 @@ const deDupeScorers = [...new Set(game.scored)];
 // console.log(deDupeScorers);
 
 const scorersNew = deDupeScorers.map(player => {
-  // debugger;
-  const tally = game.scored.reduce((sum, el) => {
-    if (el === player) {
-      sum++;
-    }
-    return sum;
-  }, 0);
-  return new Array(player, tally);
+    // debugger;
+    const tally = game.scored.reduce((sum, el) => {
+        if (el === player) {
+            sum++;
+        }
+        return sum;
+    }, 0);
+    return new Array(player, tally);
 });
 // console.log(Object.fromEntries(scorersNew));
 
 // BONUS 2) Method
 const scorers2 = {};
 for (const player of game.scored) {
-  scorers2[player] ? scorers2[player]++ : (scorers2[player] = 1);
+    scorers2[player] ? scorers2[player]++ : (scorers2[player] = 1);
 }
 // console.log(scorers2);
 
@@ -694,17 +694,17 @@ for (const player of game.scored) {
 // GOOD LUCK 😀
 
 const gameEvents = new Map([
-  [17, '⚽ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽ GOAL'],
-  [80, '⚽ GOAL'],
-  [92, '🔶 Yellow card'],
+    [17, '⚽ GOAL'],
+    [36, '🔁 Substitution'],
+    [47, '⚽ GOAL'],
+    [61, '🔁 Substitution'],
+    [64, '🔶 Yellow card'],
+    [69, '🔴 Red card'],
+    [70, '🔁 Substitution'],
+    [72, '🔁 Substitution'],
+    [76, '⚽ GOAL'],
+    [80, '⚽ GOAL'],
+    [92, '🔶 Yellow card'],
 ]);
 
 const events = [...new Set(gameEvents.values())];
@@ -742,7 +742,7 @@ delayed_departure
 // underscoreCase      ✅
 // firstName           ✅✅
 // someVariable        ✅✅✅
-// calculateAge        ✅✅✅✅
+// calcAge        ✅✅✅✅
 // delayedDeparture    ✅✅✅✅✅
 // Hints:
 // § Remember which character defines a new line in the textarea 😉
@@ -767,32 +767,32 @@ const para = document.createElement('p');
 document.body.appendChild(para);
 
 const getCamelCase = function () {
-  // debugger;
-  str = textEl.value;
-  const varArr = str.split('\n');
-  const camelCaseArr = varArr.map((el, index) => {
-    const [first, ...words] = el.trim().toLowerCase().split('_');
-    const wordsUpper = [];
-    for (let word of words) {
-      word = word[0].toUpperCase() + word.slice(1);
-      wordsUpper.push(word);
-    }
+    // debugger;
+    str = textEl.value;
+    const varArr = str.split('\n');
+    const camelCaseArr = varArr.map((el, index) => {
+        const [first, ...words] = el.trim().toLowerCase().split('_');
+        const wordsUpper = [];
+        for (let word of words) {
+            word = word[0].toUpperCase() + word.slice(1);
+            wordsUpper.push(word);
+        }
 
-    const ticks = '✅'.repeat(index + 1);
-    el = first + wordsUpper.join('');
-    el = el.padEnd(25, ' ') + ticks;
-    console.log(el);
-    return el;
-  });
+        const ticks = '✅'.repeat(index + 1);
+        el = first + wordsUpper.join('');
+        el = el.padEnd(25, ' ') + ticks;
+        console.log(el);
+        return el;
+    });
 
-  para.textContent = camelCaseArr;
+    para.textContent = camelCaseArr;
 };
 // btn.addEventListener('click', getCamelCase);
 
 // Strings extra practice
 
 const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+    '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 // 🔴 Delayed Departure from FAO to TXL (11h25)
 //              Arrival from BRU to FAO (11h45)
@@ -800,17 +800,17 @@ const flights =
 //            Departure from FAO to LIS (12h30)
 
 const flightInfo = function (data) {
-  // debugger;
-  let maxInfo = 0;
-  const getCode = string => string.slice(0, 3).toUpperCase();
-  for (const flight of data.split('+')) {
-    const [type, from, to, time] = flight.split(';');
-    const str = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
-      '_',
-      ' '
-    )} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`;
-    maxInfo = Math.max(str.length, maxInfo);
-    console.log(str.padStart(maxInfo, ' '));
-  }
+    // debugger;
+    let maxInfo = 0;
+    const getCode = string => string.slice(0, 3).toUpperCase();
+    for (const flight of data.split('+')) {
+        const [type, from, to, time] = flight.split(';');
+        const str = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+            '_',
+            ' '
+        )} from ${getCode(from)} to ${getCode(to)} (${time.replace(':', 'h')})`;
+        maxInfo = Math.max(str.length, maxInfo);
+        console.log(str.padStart(maxInfo, ' '));
+    }
 };
 flightInfo(flights);

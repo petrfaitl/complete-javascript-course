@@ -47,12 +47,12 @@ const restaurant = {
   // },
   orderDelivery({ starterIndex = 1, mainIndex = 0, address, time = '20:00' }) {
     console.log(
-      `Your order of ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+        `Your order of ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
     );
   },
   orderPasta(ing1, ing2, ing3) {
     console.log(
-      `You've ordered pasta with ${ing1}, ${ing2} and ${ing3}. Bon appetit!`
+        `You've ordered pasta with ${ing1}, ${ing2} and ${ing3}. Bon appetit!`
     );
   },
   orderPizza(mainIngredient, ...restIngredients) {
@@ -140,7 +140,7 @@ let bb = 999;
 
 // console.log(aa, bb);
 
-// Using the spread opperator
+// Using the spread operator
 
 const arr = [1, 2, 3];
 const badArr = [6, 7, arr[0], arr[1], arr[2]];
@@ -361,11 +361,11 @@ rest.set(1, 'Firenze, Italy');
 rest.set(2, 'Lisbon, Portugal');
 // console.log(rest.set(2, 'Lisbon, Portugal'));
 rest
-  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
-  .set('open', 11)
-  .set('closed', 23)
-  .set(true, 'We are open')
-  .set(false, 'We are closed');
+    .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+    .set('open', 11)
+    .set('closed', 23)
+    .set(true, 'We are open')
+    .set(false, 'We are closed');
 
 // console.log(rest.get('name'));
 // console.log(rest.get(true));
@@ -469,9 +469,9 @@ const plane = 'A380';
 
 const passenger = 'jOnAs';
 const passengerNew = passenger
-  .slice(0, 1)
-  .toUpperCase()
-  .concat(passenger.slice(1).toLowerCase());
+    .slice(0, 1)
+    .toUpperCase()
+    .concat(passenger.slice(1).toLowerCase());
 // console.log(passengerNew);
 
 const email = ' TestinG@Example.Com \n';
@@ -487,7 +487,7 @@ const priceUS = priceGB.replace('£', '$').replace(',', '.');
 // console.log(priceUS);
 
 const announcement =
-  'All passengers come to boarding door 23. Boarding door 23';
+    'All passengers come to boarding door 23. Boarding door 23';
 // console.log(announcement.replace(/door/g, 'gate'));
 
 // capitalise names

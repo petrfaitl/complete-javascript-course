@@ -1,6 +1,5 @@
 'use strict';
 
-
 // let garden = 'gravel gravel gravel gravel gravel gravel gravel gravel gravel rock slug ant gravel gravel snail rock gravel gravel gravel gravel gravel gravel gravel slug gravel ant gravel gravel gravel gravel rock slug gravel gravel gravel gravel gravel snail gravel gravel rock gravel snail slug gravel gravel spider gravel gravel gravel gravel gravel gravel gravel gravel moss gravel gravel gravel snail gravel gravel gravel ant gravel gravel moss gravel gravel gravel gravel snail gravel gravel gravel gravel slug gravel rock gravel gravel rock gravel gravel gravel gravel snail gravel gravel rock gravel gravel gravel gravel gravel spider gravel rock gravel gravel';
 let garden = 'slug spider rock gravel gravel gravel gravel gravel gravel gravel';
 let newGarden = garden.split(' ')
@@ -40,12 +39,10 @@ const checkDogs = function (arr, arr2) {
 
     });
 
-
 }
 const juliasData = [9, 16, 6, 8, 3];//[3, 5, 2, 12, 7];
 const kateData = [10, 5, 6, 1, 4]//;[4, 1, 15, 8, 3];
 // checkDogs(juliasData, kateData);
-
 
 // Coding Challenge #2
 // Let's go back to Julia and Kate's study about dogs. This time, they want to convert
@@ -72,26 +69,26 @@ const calcAverageHumanAge = function (ages) {
                           .filter(el => el >= 18)
                           .reduce((acc, el, _, arr) => acc + el / arr.length, 0));
 
-
 }
 
 // console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
 // const deposits = (mov) => mov > 0;
 //
-// const bankDepositSum = accounts.flatMap(acc => acc.movements).filter(deposits).reduce((sum, dep) => sum + dep, 0);
-// const bankBalance = accounts.flatMap(acc => acc.movements).reduce((sum, dep) => sum + dep, 0);
-// const numDeposists1000 = accounts.flatMap(acc => acc.movements)
+// const bankDepositSum = accounts.flatMap(acc => acc._movements).filter(deposits).reduce((sum, dep) => sum + dep, 0);
+// const bankBalance = accounts.flatMap(acc => acc._movements).reduce((sum, dep) => sum + dep, 0);
+// const numDeposists1000 = accounts.flatMap(acc => acc._movements)
 //                                  .reduce((tot, el) => el >= 1000 ? ++tot : tot, 0);
 //
 // console.log(bankDepositSum, bankBalance, numDeposists1000);
 
 // Create an object with sums of deposits and withdrawals, using reduce method
 
-const { deposits, withdrawals } = accounts.flatMap(acc => acc.movements).reduce((tot, mov) => {
-    mov > 0 ? tot.deposits += mov : tot.withdrawals += mov;
-    return tot;
-}, { deposits: 0, withdrawals: 0 })
+const { deposits, withdrawals } = accounts.flatMap(acc => acc.movements)
+                                          .reduce((tot, mov) => {
+                                              mov > 0 ? tot.deposits += mov : tot.withdrawals += mov;
+                                              return tot;
+                                          }, { deposits: 0, withdrawals: 0 })
 
 // console.log(deposits, withdrawals);
 
@@ -103,7 +100,6 @@ const convertTitleCase = function (title) {
     }).join(' ');
     return capitalise(titleCase);
 }
-
 
 // console.log(convertTitleCase('and is an EXAMPLE sentence that needs an attention'));
 // console.log(convertTitleCase('yet another title case thing'));
@@ -163,14 +159,14 @@ const recommendedPortion = function (obj) {
 }
 dogs.forEach(el => el.recFood = Math.floor(el.weight ** 0.75 * 28));
 
-
 const sarahDog = dogs.find(dog => dog.owners.includes('Sarah'));
 // console.log(`Sarah's dog eats too ${sarahDog.curFood > sarahDog.recFood ? 'much' : 'little'} `);
 
 const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recFood
 ).flatMap(el => el.owners);
 
-const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recFood).flatMap(el => el.owners);
+const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recFood)
+                               .flatMap(el => el.owners);
 const eatingExactly = dogs.some(dog => dog.curFood === dog.recFood);
 
 const checkEatingOkay = function (dog) {

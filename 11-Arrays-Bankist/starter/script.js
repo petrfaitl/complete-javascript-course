@@ -25,7 +25,7 @@ const account2 = {
     locale: 'cs-CS',
 };
 
-// No movements in these accounts
+// No _movements in these accounts
 
 const account3 = {
     owner: 'Steven Thomas Williams',
@@ -35,7 +35,10 @@ const account3 = {
 };
 
 const account4 = {
-    owner: 'Sarah Smith', movements: [430, 1000, 700, 50, 90], interestRate: 1, pin: 4444,
+    owner: 'Sarah Smith',
+    movements: [430, 1000, 700, 50, 90],
+    interestRate: 1,
+    pin: 4444,
 };
 
 // const accounts = [account1, account2, account3, account4];
@@ -43,7 +46,8 @@ const accounts = [account1, account2];
 
 const createUsername = function (accs) {
     accs.forEach(function (acc) {
-        acc.username = acc.owner.toLowerCase().split(' ').reduce((prev, el) => prev + el.at(0), '')
+        acc.username = acc.owner.toLowerCase().split(' ')
+                          .reduce((prev, el) => prev + el.at(0), '')
     })
 };
 
@@ -59,7 +63,7 @@ const labelSumInterest = document.querySelector('.summary__value--interest');
 const labelTimer = document.querySelector('.timer');
 
 const containerApp = document.querySelector('.app');
-const containerMovements = document.querySelector('.movements');
+const containerMovements = document.querySelector('._movements');
 
 const btnLogin = document.querySelector('.login__btn');
 const btnTransfer = document.querySelector('.form__btn--transfer');
@@ -94,9 +98,9 @@ const displayDate = function (date, locale) {
 
 const displayMovements = function (acc, sort = false) {
     containerMovements.innerHTML = '';
-    const moves = sort ? acc.movements.slice().sort((a, b) => a - b) : acc.movements;
+    const moves = sort ? acc.movements.slice()
+                            .sort((a, b) => a - b) : acc.movements;
     // console.log(moves);
-
 
     moves?.forEach(function (mov, i) {
         const date = new Date(acc.movementsDates[i]);
@@ -144,7 +148,6 @@ const transferMoney = function (event) {
             this.movementsDates.push(new Date().toISOString());
             updateUI(this);
 
-
             inputTransferTo.value = inputTransferAmount.value = '';
 
         }
@@ -186,7 +189,8 @@ const sortMovements = function () {
 }
 const eurToUsd = 1.1;
 const depositsUSD = function (movements) {
-    return movements.filter(deposit).map(mov => mov * eurToUsd).reduce((acc, mov) => acc + mov, 0);
+    return movements.filter(deposit).map(mov => mov * eurToUsd)
+                    .reduce((acc, mov) => acc + mov, 0);
 }
 const formatCurrency = function (value, locale = 'en-US', currency = 'USD') {
     return new Intl.NumberFormat(locale, {
@@ -238,7 +242,6 @@ const setCurrentDate = function (acc) {
 
     labelDate.textContent = new Intl.DateTimeFormat(acc.locale, options).format(now);
 }
-
 
 const timeOfDayGreeting = function (account) {
     const firstName = account.owner.split(' ')[0];
@@ -296,7 +299,6 @@ const setUI = function (account) {
 
 }
 
-
 const clearSession = function () {
     sessionStorage.clear();
 }
@@ -314,7 +316,6 @@ const validateUser = function (event) {
 
     res = accounts.find(el => el.username === user && el.pin === Number(pass));
 
-
     inputLoginUsername.value = '';
     inputLoginPin.value = '';
     inputLoginPin.blur();
@@ -322,7 +323,6 @@ const validateUser = function (event) {
         sessionStorage.setItem('user', user);
         sessionStorage.setItem('pass', btoa(pass));
         setUI(res);
-
 
     } else {
         clearSession();
@@ -357,7 +357,6 @@ const movementsDescriptions = movements.map(function (el, i) {
 
 });
 
-
 /////////////////////////////////////////////////-
 
 // SLICE
@@ -388,7 +387,7 @@ const letters = a.concat(a2);
 //
 // console.log(a.at(-1));
 
-// movements.forEach((a,i) => {
+// _movements.forEach((a,i) => {
 //   if(a>0){
 //     console.log(`Movement ${i}: You have deposited $ ${a}`);
 //   }else{
@@ -399,18 +398,16 @@ const letters = a.concat(a2);
 
 // currencies.forEach((val, key,arr)=> console.log(`${key}: ${val}`) )
 
-// const accountMovements = accounts.map(acc => acc.movements).flat();
+// const accountMovements = accounts.map(acc => acc._movements).flat();
 // console.log(accountMovements.filter(deposit), accountMovements.filter(deposit).reduce((tot, dep) => tot + dep, 0));
 // console.log(accountMovements.filter(withdrawal), accountMovements.filter(withdrawal)
 //                                                                  .reduce((tot, withdraw) => tot + withdraw, 0));
 
 // console.log(accountMovements.reduce((sum, mov) => sum + mov, 0));
 
-
 // flatMap method; maps several arrays to one array and flattens them from subarrays.
-// const overallDeposits = accounts.flatMap(acc => acc.movements).reduce((tot, mov) => tot + mov, 0);
+// const overallDeposits = accounts.flatMap(acc => acc._movements).reduce((tot, mov) => tot + mov, 0);
 // console.log(overallDeposits);
-
 
 // Fill method
 // console.log([1, 2, 3]);
@@ -437,6 +434,17 @@ const letters = a.concat(a2);
 //                                      .reduce((tot, el) => tot + Number(el), 0);
 //     console.log(movementsUIBalance2);
 // });
+
+const randDice = function () {
+    return Math.floor(Math.random() * 6);
+}
+const data = [0, 1, 2]
+const rollArr = Array.from({ length: 300 }, randDice);
+let frequency = Array.from({ length: 6 }, () => 0);
+rollArr.forEach((roll) => {
+    frequency[roll]++;
+})
+// console.log(frequency);
 
 // console.log(typeof (+'33'));
 // Numeric separators

@@ -193,21 +193,21 @@ const walter = new PersonCl('Walter White', 1965);
 // Setters and Getters
 const account = {
   owner: 'Jonas',
-  movements: [200, 530, 120, 300],
+  _movements: [200, 530, 120, 300],
 
   get latest() {
-    return this.movements.slice(-1).pop();
+    return this._movements.slice(-1).pop();
   },
 
   set latest(mov) {
-    this.movements.push(mov);
+    this._movements.push(mov);
   },
 };
 
 console.log(account.latest);
 
 account.latest = 50;
-console.log(account.movements);
+console.log(account._movements);
 
 
 ///////////////////////////////////////
@@ -496,7 +496,7 @@ class Account {
   locale = navigator.language;
 
   // 2) Private fields (instances)
-  #movements = [];
+  #_movements = [];
   #pin;
 
   constructor(owner, currency, pin) {
@@ -515,11 +515,11 @@ class Account {
 
   // Public interface
   getMovements() {
-    return this.#movements;
+    return this.#_movements;
   }
 
   deposit(val) {
-    this.#movements.push(val);
+    this.#_movements.push(val);
     return this;
   }
 
@@ -561,7 +561,7 @@ console.log(acc1.getMovements());
 console.log(acc1);
 Account.helper();
 
-// console.log(acc1.#movements);
+// console.log(acc1.#_movements);
 // console.log(acc1.#pin);
 // console.log(acc1.#approveLoan(100));
 
