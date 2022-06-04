@@ -60,23 +60,23 @@
 // console.log(jonas.greet());
 
 function funcDecl(...numbers) {
-  console.log(arguments);
-  return;
+    console.log(arguments);
+
 }
 
 funcDecl(1, 2, 3, 4, 5, 6, 7);
 
 const funcExp = function (...numbers) {
-  console.log(arguments);
-  return;
+    console.log(arguments);
+
 };
 
 funcExp(1, 2, 3, 4, 5, 6, 7);
 
 // Won't  work; no arguments kw in arrow functions
 const funcArrow = (...numbers) => {
-  console.log(arguments);
-  return;
+    console.log(arguments);
+
 };
 
 funcArrow(1, 2, 3, 4, 5, 6, 7);

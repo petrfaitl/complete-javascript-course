@@ -342,16 +342,16 @@ const readableTimetable = workdays => {
     const isNeighbour = function (a, b) {
         return dayOrder.indexOf(b) - dayOrder.indexOf(a) === 1;
     };
-    const equalTime = function(obj1, obj2){
-        return obj1.from=== obj2.from && obj1.to === obj2.to;
+    const equalTime = function (obj1, obj2) {
+        return obj1.from === obj2.from && obj1.to === obj2.to;
     }
 
-    const stringBuilder = function(arr) {
-        let str = arr.reduce((prev, el) =>{
-            const optStr = el.days.length >1? ` - ${el.days[el.days.length - 1].toUpperCase()}` : '';
-            prev+= `${el.days[0].toUpperCase()}${optStr}: ${el.from} - ${el.to}\n` ;
+    const stringBuilder = function (arr) {
+        let str = arr.reduce((prev, el) => {
+            const optStr = el.days.length > 1 ? ` - ${el.days[el.days.length - 1].toUpperCase()}` : '';
+            prev += `${el.days[0].toUpperCase()}${optStr}: ${el.from} - ${el.to}\n`;
             return prev;
-        },'')
+        }, '')
         return str.trim();
     }
 
@@ -365,15 +365,14 @@ const readableTimetable = workdays => {
 
     let batch = 0;
     const dayArrays = [];
-    for (let [index,workday] of workdays.entries()){
-        if(dayArrays.length ===0 ){
+    for (let [index, workday] of workdays.entries()) {
+        if (dayArrays.length === 0) {
             dayArrays.push({days: [workday.day], from: workday.from, to: workday.to});
-        }else if(isNeighbour(workdays[index-1].day,workday.day) && equalTime(workdays[index-1], workday)){
+        } else if (isNeighbour(workdays[index - 1].day, workday.day) && equalTime(workdays[index - 1], workday)) {
             dayArrays[batch].days.push(workday.day);
-        }
-        else {
+        } else {
             dayArrays.push({days: [workday.day], from: workday.from, to: workday.to});
-            batch ++;
+            batch++;
         }
 
     }
@@ -381,7 +380,6 @@ const readableTimetable = workdays => {
 };
 // readableTimetable();
 // console.dir(readableTimetable(data));
-
 
 
 // Let's build a simple poll app!
@@ -438,7 +436,7 @@ poll.registerNewAnswer = function () {
 
     const optionNumbers = this.options.map(el => el.split(':')[0]);
     if (!answer) {
-        return;
+
     } else if (optionNumbers.includes(answer)) {
         this.answers[answer]++;
         this.displayResults('string');
@@ -481,8 +479,8 @@ const displayData = poll.displayResults;
 //     and what that means for the variables involved in this example.
 //
 //
- (function () {
+(function () {
     const header = document.querySelector('h1');
     header.style.color = 'red';
-     window.addEventListener('click', ()=> header.style.color = 'lightblue');
+    window.addEventListener('click', () => header.style.color = 'lightblue');
 })();

@@ -82,7 +82,7 @@ const players1Final = [...players1, 'Thiago', 'Coutinho', 'Perisic'];
 
 // 5
 
-const { team1, x: draw, team2 } = game.odds;
+const {team1, x: draw, team2} = game.odds;
 // console.log(team1, draw, team2);
 
 // 6
@@ -343,7 +343,7 @@ function longestConsec(strarr, k) {
 // M          1,000
 
 function solution(roman) {
-    const values = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+    const values = {I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000};
     let sum = 0;
 
     const digits = [...roman];
@@ -664,7 +664,7 @@ const scorersNew = deDupeScorers.map(player => {
         }
         return sum;
     }, 0);
-    return new Array(player, tally);
+    return [player, tally];
 });
 // console.log(Object.fromEntries(scorersNew));
 
@@ -768,7 +768,7 @@ document.body.appendChild(para);
 
 const getCamelCase = function () {
     // debugger;
-    str = textEl.value;
+    const str = textEl.value;
     const varArr = str.split('\n');
     const camelCaseArr = varArr.map((el, index) => {
         const [first, ...words] = el.trim().toLowerCase().split('_');

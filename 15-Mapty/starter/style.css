@@ -8,7 +8,7 @@
     --color-light--1: #aaa;
     --color-light--2: #ececec;
     --color-light--3: rgb(214, 222, 224);
-    --bp-medium: 56.25em;
+    --bp-medium: 68.75em;
     /* //900px*/
 }
 
@@ -23,7 +23,7 @@ html {
     box-sizing: border-box;
 }
 
-@media screen and (max-width: var(--bp-medium)) {
+@media screen and (max-width: 68.75em) {
     html {
         font-size: 50%;
     }
@@ -59,7 +59,7 @@ a:visited {
     flex-direction: column;
 }
 
-@media screen and (max-width: var(--bp-medium)) {
+@media screen and (max-width: 68.75em) {
     .sidebar {
         flex-basis: 30rem;
     }
@@ -95,7 +95,7 @@ a:visited {
     gap: 0.75rem 1.5rem;
 }
 
-@media screen and (max-width: var(--bp-medium)) {
+@media screen and (max-width: 68.75em) {
     .workout {
         grid-template-columns: 1fr 1fr;
     }
@@ -153,7 +153,7 @@ a:visited {
     transition: all 0.5s, transform 1ms;
 }
 
-@media screen and (max-width: var(--bp-medium)) {
+@media screen and (max-width: 68.75em) {
     .form {
         grid-template-columns:1fr;
         height: fit-content;
