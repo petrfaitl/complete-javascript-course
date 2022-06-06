@@ -122,8 +122,13 @@ a:visited {
 
 .workout__icon {
     font-size: 1.8rem;
-    margin-right: 0.2rem;
+    margin-right: 0.9rem;
     height: 0.28rem;
+}
+
+.workout__separator {
+    grid-column: 1 / -1;
+    border-bottom: 1px solid var(--color-light--1);
 }
 
 .workout__value {
