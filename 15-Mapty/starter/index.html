@@ -28,6 +28,27 @@
     <img src="logo.png" alt="Logo" class="logo"/>
 
     <!--  <ul class="workouts">-->
+    <div class="workouts__sort">
+        <button class="btn sort__btn">
+            <svg alt="sort" style="width:24px;height:24px" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M3,13H15V11H3M3,6V8H21V6M3,18H9V16H3V18Z"/>
+            </svg>
+        </button>
+
+        <div class="workouts__sort__container workouts__sort__container--hidden">
+            <ul class="workouts__sort__items">
+                <li class="workouts__sort__item"><span class="workouts__sort__item__icon"></span><span
+                        class="workouts__sort__text" data-sort-type="type">Sort by Workout Type</span></li>
+                <li class="workouts__sort__item"><span class="workouts__sort__item__icon"></span><span
+                        class="workouts__sort__text" data-sort-type="date">Sort by Date</span></li>
+                <li class="workouts__sort__item"><span class="workouts__sort__item__icon"></span><span
+                        class="workouts__sort__text" data-sort-type="distance">Sort by Distance</span></li>
+                <li class="workouts__sort__item"><span class="workouts__sort__item__icon"></span><span
+                        class="workouts__sort__text" data-sort-type="duration">Sort by Duration</span></li>
+
+            </ul>
+        </div>
+    </div>
     <form class="form hidden">
         <div class="form__row">
             <label for="type" class="form__label">Type</label>
@@ -122,8 +143,16 @@
         <!--            <span class="workout__unit">m</span>-->
         <!--          </div>-->
         <!--        </li>-->
-    </ul>
 
+
+    </ul>
+    <div class="workout__btn__container hidden">
+        <div class="workout__details workout__btn workout__btn--delete-all">
+            <!--            <span class="workout__icon">🗑️</span>-->
+            <span class="workout__btn__value">Delete All</span>
+        </div>
+
+    </div>
     <p class="copyright">
         &copy; Copyright by
         <a
@@ -131,8 +160,10 @@
                 target="_blank"
                 href="https://twitter.com/jonasschmedtman"
         >Jonas Schmedtmann</a
-        >. Use for learning or your portfolio. Don't use to teach. Don't claim
-        as your own.
+        >. Code enhancement by <a
+            class="twitter-link"
+            target="_blank"
+            href="https://github.com/petrfaitl">Petr Faitl</a>.
     </p>
 </div>
 
