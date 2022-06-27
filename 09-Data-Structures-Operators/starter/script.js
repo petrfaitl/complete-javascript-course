@@ -5,60 +5,65 @@
 //   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
 const hours = {
-  thu: {
-    open: 12,
-    close: 22,
-  },
-  fri: {
-    open: 11,
-    close: 23,
-  },
-  sat: {
-    open: 0, // Open 24 hours
-    close: 24,
-  },
+    thu: {
+        open: 12,
+        close: 22,
+    },
+    fri: {
+        open: 11,
+        close: 23,
+    },
+    sat: {
+        open: 0, // Open 24 hours
+        close: 24,
+    },
 };
 
 // Data needed for first part of the section
 const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-  order: function (starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-  // Enhanced object literals
-  hours,
-  // openingHours: {
-  //   thu: {
-  //     open: 12,
-  //     close: 22,
-  //   },
-  //   fri: {
-  //     open: 11,
-  //     close: 23,
-  //   },
-  //   sat: {
-  //     open: 0, // Open 24 hours
-  //     close: 24,
-  //   },
-  // },
-  orderDelivery({ starterIndex = 1, mainIndex = 0, address, time = '20:00' }) {
-    console.log(
-        `Your order of ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
-    );
-  },
-  orderPasta(ing1, ing2, ing3) {
-    console.log(
-        `You've ordered pasta with ${ing1}, ${ing2} and ${ing3}. Bon appetit!`
-    );
-  },
-  orderPizza(mainIngredient, ...restIngredients) {
-    console.log(mainIngredient);
-    console.log(restIngredients);
-  },
+    name: 'Classico Italiano',
+    location: 'Via Angelo Tavanti 23, Firenze, Italy',
+    categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+    starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+    order: function (starterIndex, mainIndex) {
+        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+    },
+    // Enhanced object literals
+    hours,
+    // openingHours: {
+    //   thu: {
+    //     open: 12,
+    //     close: 22,
+    //   },
+    //   fri: {
+    //     open: 11,
+    //     close: 23,
+    //   },
+    //   sat: {
+    //     open: 0, // Open 24 hours
+    //     close: 24,
+    //   },
+    // },
+    orderDelivery({
+                      starterIndex = 1,
+                      mainIndex = 0,
+                      address,
+                      time = '20:00'
+                  }) {
+        console.log(
+            `Your order of ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`
+        );
+    },
+    orderPasta(ing1, ing2, ing3) {
+        console.log(
+            `You've ordered pasta with ${ing1}, ${ing2} and ${ing3}. Bon appetit!`
+        );
+    },
+    orderPizza(mainIngredient, ...restIngredients) {
+        console.log(mainIngredient);
+        console.log(restIngredients);
+    },
 };
 //  Instant desctructuring; object as an argument
 // restaurant.orderDelivery({
@@ -176,8 +181,8 @@ const newRestaurant = { FoundedIn: 1998, ...restaurant, founder: 'Bob' };
 
 // console.log(x, y, others);
 const [pizza, risotto, ...otherFood] = [
-  ...restaurant.mainMenu,
-  ...restaurant.starterMenu,
+    ...restaurant.mainMenu,
+    ...restaurant.starterMenu,
 ];
 // console.log(pizza, risotto, otherFood);
 
@@ -189,8 +194,8 @@ const [pizza, risotto, ...otherFood] = [
 // Spread and rest together
 //Using Rest as a parameter (rest creates an array from params)
 const add = function (...numbers) {
-  const sum = numbers.reduce((tot, el) => (tot += el));
-  console.log(sum);
+    const sum = numbers.reduce((tot, el) => (tot += el));
+    console.log(sum);
 };
 
 // const { sat: saturday } = restaurant.openingHours;
@@ -232,12 +237,12 @@ const guestsCorrect = restaurant.numGuests ?? 10;
 //  Logical assignment operator
 
 const rest1 = {
-  name: 'Classico Italiano',
-  numGuests: 0,
+    name: 'Classico Italiano',
+    numGuests: 0,
 };
 const rest2 = {
-  name: 'Nobile',
-  owner: 'Guessepe Rossi',
+    name: 'Nobile',
+    owner: 'Guessepe Rossi',
 };
 
 // OR assignment operator
@@ -271,8 +276,8 @@ rest2.owner &&= '<ANONYMOUS>';
 const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
 for (const day of days) {
-  const open = restaurant.hours[day]?.open ?? 'closed'; // optional chaining and  Nullish coalescing operator
-  // console.log(`On ${day} our restaurant is ${open}`);
+    const open = restaurant.hours[day]?.open ?? 'closed'; // optional chaining and  Nullish coalescing operator
+    // console.log(`On ${day} our restaurant is ${open}`);
 }
 
 // optional chaing  on methods
@@ -281,13 +286,13 @@ for (const day of days) {
 // console.log(restaurant.orderPizza?.(0, 1) ?? 'Method does not exist'); // Test if function exists
 
 // Optional chaining Arrays
-const users = [{ name: 'Jonas', lastName: 'Schmedtmann' }];
+const res = [{ name: 'Jonas', lastName: 'Schmedtmann' }];
 // console.log(users[0]?.name ?? "User doesn't exist"); // Optional chaing with Nullish coalescing operator
 
 // Looping over objects
 
 for (const day of Object.keys(hours)) {
-  // console.log(day);
+    // console.log(day);
 }
 
 // const keys = Object.keys(hours);
@@ -320,15 +325,15 @@ const entries = Object.entries(hours);
 // Remove duplicate values
 
 const ordersSet = new Set([
-  'Pasta',
-  'Risotto',
-  'Pizza',
-  'Pizza',
-  'Pizza',
-  'Pizza',
-  'Pizza',
-  'Pizza',
-  'Pizza',
+    'Pasta',
+    'Risotto',
+    'Pizza',
+    'Pizza',
+    'Pizza',
+    'Pizza',
+    'Pizza',
+    'Pizza',
+    'Pizza',
 ]);
 
 // console.log(ordersSet);
@@ -344,11 +349,11 @@ ordersSet.delete('Pasta');
 // console.log(ordersSet.values());
 
 for (const order of ordersSet) {
-  // console.log(order);
+    // console.log(order);
 }
 
 const staffUnique = [
-  ...new Set(['Waiter', 'Cheff', 'Manager', 'Cheff', 'Bouncer', 'Waiter']),
+    ...new Set(['Waiter', 'Cheff', 'Manager', 'Cheff', 'Bouncer', 'Waiter']),
 ]; //Using spread operator
 // console.log(staffUnique);
 // console.log(new Set('PetrFaitl').size);
@@ -380,13 +385,13 @@ const time = 20;
 // console.log(rest);
 
 const question = new Map([
-  ['question', "What's the best programming language?"],
-  [1, 'C'],
-  [2, 'java'],
-  [3, 'javascript'],
-  ['correct', 3],
-  [true, 'Correct'],
-  [false, 'Try again.'],
+    ['question', "What's the best programming language?"],
+    [1, 'C'],
+    [2, 'java'],
+    [3, 'javascript'],
+    ['correct', 3],
+    [true, 'Correct'],
+    [false, 'Try again.'],
 ]);
 
 // console.log(question.get('question'));
@@ -443,9 +448,9 @@ const task2 = new Set(['Code', 'Eat', 'Sleep', 'Code']);
 
 // Objects
 const task3 = {
-  task: 'Code',
-  date: 'today',
-  repeat: true,
+    task: 'Code',
+    date: 'today',
+    repeat: true,
 };
 // traditional; easier to access values with . and [] notation;
 // Use when working with JSON (can convert to map)
@@ -453,9 +458,9 @@ const task3 = {
 
 // Maps
 const task4 = new Map([
-  ['task', 'Code'],
-  ['date', 'today'],
-  [false, 'Start coding'],
+    ['task', 'Code'],
+    ['date', 'today'],
+    [false, 'Start coding'],
 ]);
 // better performance; can have any data type; easy to iterate; easy to compute size
 // Use Maps to simply map keys to values; when you need keys that are not strings
@@ -493,13 +498,13 @@ const announcement =
 // capitalise names
 
 const capitaliseNames = function (name) {
-  const names = name.split(' ');
-  const uppercaseNames = [];
+    const names = name.split(' ');
+    const uppercaseNames = [];
 
-  for (const n of names) {
-    uppercaseNames.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  // console.log(uppercaseNames.join(' '));
+    for (const n of names) {
+        uppercaseNames.push(n.replace(n[0], n[0].toUpperCase()));
+    }
+    // console.log(uppercaseNames.join(' '));
 };
 
 capitaliseNames('sarah jessica parker');
@@ -517,9 +522,9 @@ const message = 'Go to gate 23!';
 // );
 
 const maskCreditCard = number => {
-  const str = number + '';
-  const secretNumber = str.slice(-4);
-  console.log(secretNumber.padStart(str.length, '*'));
+    const str = number + '';
+    const secretNumber = str.slice(-4);
+    console.log(secretNumber.padStart(str.length, '*'));
 };
 
 // maskCreditCard(1234567890);
@@ -531,7 +536,7 @@ const messag2 = 'Bad weather, departure delayed! ';
 // console.log(messag2.repeat(5));
 
 const planesWaiting = function (n) {
-  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}. `);
+    console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}. `);
 };
 
 // planesWaiting(5);
