@@ -1,6 +1,5 @@
 import * as model from './model.js';
 import recipeView from './view/RecipeView.js';
-// import * as util from './view/viewUtils.js';
 import 'core-js/stable';
 import 'regenerator-runtime/runtime';
 
