@@ -1,17 +1,22 @@
+import { API_URL, RES_PER_PAGE } from './config.js';
+import { getJSON } from './helpers';
+import 'regenerator-runtime/runtime';
+import recipeView from './view/RecipeView';
+
 export const state = {
-  recipe: {}, search: {}, bookmarks: []
+  recipe: {},
+  search: { query: '', results: [], page: 1, resultsPerPage: RES_PER_PAGE },
+  bookmarks: []
+
 
 };
-export const loadRecipe = async function(hashId) {
+export const loadRecipe = async function(id) {
   // https://forkify-api.herokuapp.com/v2
 
   try {
-    const recipeUrl = `https://forkify-api.herokuapp.com/api/v2/recipes/${hashId}`;
-    const response = await fetch(recipeUrl);
-    const data = await response.json();
-    if (!response.ok) throw new Error(`${data.message} (status: ${response.status})`);
+    const data = await getJSON(`${API_URL}${id}`);
+    const { recipe } = data.data;
 
-    let { recipe } = data.data;
 
     // Reformat the recipe object without underscores; simplify for
     // retrieval later; save it to the state object;
@@ -27,9 +32,39 @@ export const loadRecipe = async function(hashId) {
       cookingTime: recipe.cooking_time
 
     };
-    console.log(state);
+    // console.log(state);
     // return state.recipe;
   } catch (error) {
-    console.log(error);
+    throw error;
   }
+};
+
+export const loadSearchResults = async function(query) {
+  try {
+    const data = await getJSON(`${API_URL}?search=${query}`);
+    const { recipes } = data.data;
+    state.search.query = query;
+    state.search.results = recipes.map(recipe => {
+      return {
+        id: recipe.id,
+        title: recipe.title,
+        publisher: recipe.publisher,
+        image: recipe.image_url
+      };
+
+    });
+
+
+  } catch (err) {
+    throw err;
+  }
+};
+
+// Returns only a slice of the search result array
+export const getSearchResultsPage = function(page = state.search.page) {
+  state.search.page = page;
+  state.search.maxPage = Math.ceil(state.search.results.length / state.search.resultsPerPage);
+  const sliceStart = (page - 1) * state.search.resultsPerPage;
+  return state.search.results.slice(sliceStart,
+                                    sliceStart + state.search.resultsPerPage);
 };

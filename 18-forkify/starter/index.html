@@ -18,77 +18,78 @@
 
 <body>
 <div class='container'>
-  <header class='header'>
-    <img src='src/img/logo.png' alt='Logo' class='header__logo' />
-    <form class='search'>
-      <input
-        type='text'
-        class='search__field'
-        placeholder='Search over 1,000,000 recipes...'
-      />
-      <button class='btn search__btn'>
-        <svg class='search__icon'>
-          <use href='src/img/icons.svg#icon-search'></use>
-        </svg>
-        <span>Search</span>
-      </button>
-    </form>
+  <include src='header.html'></include>
+  <!--  <header class='header'>-->
+  <!--    <img src='src/img/logo.png' alt='Logo' class='header__logo' />-->
+  <!--    <form class='search'>-->
+  <!--      <input-->
+  <!--        type='text'-->
+  <!--        class='search__field'-->
+  <!--        placeholder='Search over 1,000,000 recipes...'-->
+  <!--      />-->
+  <!--      <button class='btn search__btn'>-->
+  <!--        <svg class='search__icon'>-->
+  <!--          <use href='src/img/icons.svg#icon-search'></use>-->
+  <!--        </svg>-->
+  <!--        <span>Search</span>-->
+  <!--      </button>-->
+  <!--    </form>-->
 
-    <nav class='nav'>
-      <ul class='nav__list'>
-        <li class='nav__item'>
-          <button class='nav__btn nav__btn--add-recipe'>
-            <svg class='nav__icon'>
-              <use href='src/img/icons.svg#icon-edit'></use>
-            </svg>
-            <span>Add recipe</span>
-          </button>
-        </li>
-        <li class='nav__item'>
-          <button class='nav__btn nav__btn--bookmarks'>
-            <svg class='nav__icon'>
-              <use href='src/img/icons.svg#icon-bookmark'></use>
-            </svg>
-            <span>Bookmarks</span>
-          </button>
-          <div class='bookmarks'>
-            <ul class='bookmarks__list'>
-              <div class='message'>
-                <div>
-                  <svg>
-                    <use href='src/img/icons.svg#icon-smile'></use>
-                  </svg>
-                </div>
-                <p>
-                  No bookmarks yet. Find a nice recipe and bookmark it :)
-                </p>
-              </div>
+  <!--    <nav class='nav'>-->
+  <!--      <ul class='nav__list'>-->
+  <!--        <li class='nav__item'>-->
+  <!--          <button class='nav__btn nav__btn&#45;&#45;add-recipe'>-->
+  <!--            <svg class='nav__icon'>-->
+  <!--              <use href='src/img/icons.svg#icon-edit'></use>-->
+  <!--            </svg>-->
+  <!--            <span>Add recipe</span>-->
+  <!--          </button>-->
+  <!--        </li>-->
+  <!--        <li class='nav__item'>-->
+  <!--          <button class='nav__btn nav__btn&#45;&#45;bookmarks'>-->
+  <!--            <svg class='nav__icon'>-->
+  <!--              <use href='src/img/icons.svg#icon-bookmark'></use>-->
+  <!--            </svg>-->
+  <!--            <span>Bookmarks</span>-->
+  <!--          </button>-->
+  <!--          <div class='bookmarks'>-->
+  <!--            <ul class='bookmarks__list'>-->
+  <!--              <div class='message'>-->
+  <!--                <div>-->
+  <!--                  <svg>-->
+  <!--                    <use href='src/img/icons.svg#icon-smile'></use>-->
+  <!--                  </svg>-->
+  <!--                </div>-->
+  <!--                <p>-->
+  <!--                  No bookmarks yet. Find a nice recipe and bookmark it :)-->
+  <!--                </p>-->
+  <!--              </div>-->
 
-              <!-- <li class="preview">
-                <a class="preview__link" href="#23456">
-                  <figure class="preview__fig">
-                    <img src="src/img/test-1.jpg" alt="Test" />
-                  </figure>
-                  <div class="preview__data">
-                    <h4 class="preview__name">
-                      Pasta with Tomato Cream ...
-                    </h4>
-                    <p class="preview__publisher">The Pioneer Woman</p>
-                  </div>
-                </a>
-              </li> -->
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <!--              &lt;!&ndash; <li class="preview">-->
+  <!--                <a class="preview__link" href="#23456">-->
+  <!--                  <figure class="preview__fig">-->
+  <!--                    <img src="src/img/test-1.jpg" alt="Test" />-->
+  <!--                  </figure>-->
+  <!--                  <div class="preview__data">-->
+  <!--                    <h4 class="preview__name">-->
+  <!--                      Pasta with Tomato Cream ...-->
+  <!--                    </h4>-->
+  <!--                    <p class="preview__publisher">The Pioneer Woman</p>-->
+  <!--                  </div>-->
+  <!--                </a>-->
+  <!--              </li> &ndash;&gt;-->
+  <!--            </ul>-->
+  <!--          </div>-->
+  <!--        </li>-->
+  <!--      </ul>-->
+  <!--    </nav>-->
+  <!--  </header>-->
 
   <div class='search-results'>
     <ul class='results'>
-      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bc886'>Recipe 1</a></li>
-      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bced8'>Recipe 2</a></li>
-      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bcac4'>Recipe 3</a></li>
+      <!--      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bc886'>Recipe 1</a></li>-->
+      <!--      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bced8'>Recipe 2</a></li>-->
+      <!--      <li class='preview'><a class='preview__link' href='#5ed6604591c37cdc054bcac4'>Recipe 3</a></li>-->
       <!--
       <li class="preview">
         <a class="preview__link preview__link--active" href="#23456">
@@ -110,18 +111,18 @@
     </ul>
 
     <div class='pagination'>
-      <!-- <button class="btn--inline pagination__btn--prev">
-        <svg class="search__icon">
-          <use href="src/img/icons.svg#icon-arrow-left"></use>
-        </svg>
-        <span>Page 1</span>
-      </button>
-      <button class="btn--inline pagination__btn--next">
-        <span>Page 3</span>
-        <svg class="search__icon">
-          <use href="src/img/icons.svg#icon-arrow-right"></use>
-        </svg>
-      </button> -->
+      <!--      <button class='btn&#45;&#45;inline pagination__btn&#45;&#45;prev'>-->
+      <!--        <svg class='search__icon'>-->
+      <!--          <use href='src/img/icons.svg#icon-arrow-left'></use>-->
+      <!--        </svg>-->
+      <!--        <span>Page 1</span>-->
+      <!--      </button>-->
+      <!--      <button class='btn&#45;&#45;inline pagination__btn&#45;&#45;next'>-->
+      <!--        <span>Page 3</span>-->
+      <!--        <svg class='search__icon'>-->
+      <!--          <use href='src/img/icons.svg#icon-arrow-right'></use>-->
+      <!--        </svg>-->
+      <!--      </button>-->
     </div>
 
     <p class='copyright'>
