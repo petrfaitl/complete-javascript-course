@@ -10,23 +10,23 @@ class PaginationView extends View {
 
 
   _generateMarkup() {
-    console.log(this._data);
     let markup = '';
+    const currentPage = this._data.page;
     if (this._data.page > 1) {
-      markup += this._renderPreviousPaginationMarkup();
+      markup += this._renderPreviousPaginationMarkup(currentPage);
     }
-    if (this._data.page < this._data.maxPage) {
+    if (currentPage < this._data.maxPage) {
 
-      markup += this._renderNextPaginationMarkup();
+      markup += this._renderNextPaginationMarkup(currentPage);
     }
     return markup;
   }
 
 
-  _renderNextPaginationMarkup() {
+  _renderNextPaginationMarkup(page) {
     return `
-        <button class='btn--inline pagination__btn--next' data-page='next'>
-        <span>Page ${this._data.page + 1}</span>
+        <button class='btn--inline pagination__btn--next' data-page='${page + 1}'>
+        <span>Page ${page + 1}</span>
         <svg class='search__icon'>
           <use href='${icons}#icon-arrow-right'></use>
         </svg>
@@ -34,19 +34,25 @@ class PaginationView extends View {
     `;
   }
 
-  _renderPreviousPaginationMarkup() {
+  _renderPreviousPaginationMarkup(page) {
     return `
-    <button class='btn--inline pagination__btn--prev' data-page='prev'>
+    <button class='btn--inline pagination__btn--prev' data-page='${page - 1}'>
         <svg class='search__icon'>
           <use href='${icons}#icon-arrow-left'></use>
         </svg>
-        <span>Page ${this._data.page - 1}</span>
+        <span>Page ${page - 1}</span>
       </button>
     `;
   }
 
   addHandlerPagination(handler) {
-    this._parentElement.addEventListener('click', handler);
+    this._parentElement.addEventListener('click', function(e) {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const goToPage = parseInt(btn.getAttribute('data-page'));
+
+      return handler(goToPage);
+    });
   }
 
 }

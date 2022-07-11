@@ -7,6 +7,15 @@ export default class View {
   _errorMessage;
   _successMessage;
 
+
+  /**
+   * Render the received object to the DOM
+   * @param {Object | Object[]} data The data to be rendered (e.g. recipe)
+   * @return {undefined}
+   * @this {Object} View instance
+   * @author Petr Faitl
+   * @todo
+   */
   render(data) {
     if (!data || (Array.isArray(data) && data.length === 0)) {
       return this.renderError();
@@ -16,6 +25,17 @@ export default class View {
     this._parentElement.insertAdjacentHTML('beforeend', this._generateMarkup());
   }
 
+  update(data) {
+    if (!data || (Array.isArray(data) && data.length === 0)) {
+      return this.renderError();
+    }
+    this._data = data;
+    const newMarkup = this._generateMarkup();
+    // const newDOM =
+
+
+  }
+
   _clear() {
     this._parentElement.innerHTML = '';
   }
@@ -23,6 +43,8 @@ export default class View {
   _generateMarkup() {
   }
 
+  _userGeneratedRecipe() {
+  }
 
   renderSpinner() {
     const markup = `

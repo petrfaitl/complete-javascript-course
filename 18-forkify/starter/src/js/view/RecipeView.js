@@ -7,7 +7,7 @@ import 'regenerator-runtime/runtime';
 
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
-  // _data;
+
   _errorMessage = 'Recipe not found. Please try another one!';
   _successMessage;
 
@@ -38,12 +38,12 @@ class RecipeView extends View {
         <span class='recipe__info-text'>servings</span>
 
         <div class='recipe__info-buttons'>
-          <button class='btn--tiny btn--increase-servings'>
+          <button class='btn--tiny btn--update-servings' data-servings='${this._data.servings - 1}'>
             <svg>
               <use href='${icons}#icon-minus-circle'></use>
             </svg>
           </button>
-          <button class='btn--tiny btn--increase-servings'>
+          <button class='btn--tiny btn--update-servings' data-servings='${this._data.servings + 1}'>
             <svg>
               <use href='${icons}#icon-plus-circle'></use>
             </svg>
@@ -51,9 +51,16 @@ class RecipeView extends View {
         </div>
       </div>
       
-      <button class='btn--round'>
+      <div class='recipe__user-generated ${this._data.key ? '' : 'hidden'}'>
+        <svg>
+          <use href='${icons}#icon-user'></use>
+        </svg>
+      </div>
+      <button class='btn--round btn--bookmark' >
         <svg class=''>
-          <use href='${icons}#icon-bookmark-fill'></use>
+          <use href='${icons}#icon-bookmark${this._data.bookmarked
+                                             ? '-fill'
+                                             : ''}'></use>
         </svg>
       </button>
     </div>
@@ -90,6 +97,7 @@ class RecipeView extends View {
 
   }
 
+
   #renderRecipeIngredient(ing) {
     return `
               <li class='recipe__ingredient'>
@@ -115,6 +123,30 @@ class RecipeView extends View {
                                                                  handler));
   }
 
+  addHandlerUpdateServings(handler) {
+
+    // console.log(this._data);
+    this._parentElement.addEventListener('click', evt => {
+
+      const btn = evt.target.closest('.btn--update-servings');
+      if (!btn) return;
+      const servings = parseInt(btn.getAttribute('data-servings'));
+      // console.log(servings);
+      return handler(servings);
+    });
+  }
+
+
+  addHandlerAddBookmark(handler) {
+    this._parentElement.addEventListener('click', evt => {
+
+      const btn = evt.target.closest('.btn--bookmark');
+      if (!btn) return;
+
+
+      handler();
+    });
+  }
 
 }
 

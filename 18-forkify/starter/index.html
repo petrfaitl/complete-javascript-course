@@ -19,6 +19,8 @@
 <body>
 <div class='container'>
   <include src='header.html'></include>
+
+  <!--  Moved to a header.html file-->
   <!--  <header class='header'>-->
   <!--    <img src='src/img/logo.png' alt='Logo' class='header__logo' />-->
   <!--    <form class='search'>-->
@@ -186,7 +188,7 @@
         <span class="recipe__info-text">servings</span>
 
         <div class="recipe__info-buttons">
-          <button class="btn--tiny btn--increase-servings">
+          <button class="btn--tiny btn--decrease-servings">
             <svg>
               <use href="src/img/icons.svg#icon-minus-circle"></use>
             </svg>
@@ -269,15 +271,16 @@
       <label>Title</label>
       <input value='TEST' required name='title' type='text' />
       <label>URL</label>
-      <input value='TEST' required name='sourceUrl' type='text' />
+      <input value='http://example.com' required name='sourceUrl' type='text' />
       <label>Image URL</label>
-      <input value='TEST' required name='image' type='text' />
+      <input value='https://media-cdn.tripadvisor.com/media/photo-s/17/f4/cf/14/a-bit-of-what-we-are.jpg' required
+             name='image' type='text' />
       <label>Publisher</label>
       <input value='TEST' required name='publisher' type='text' />
       <label>Prep time</label>
       <input value='23' required name='cookingTime' type='number' />
       <label>Servings</label>
-      <input value='23' required name='servings' type='number' />
+      <input value='4' required name='servings' type='number' />
     </div>
 
     <div class='upload__column'>
